@@ -1,0 +1,20 @@
+# Deny-by-default. This repo publishes to GitHub Pages, so ONLY the files
+# that are meant to be public may ever be committed.
+#
+# Everything else in this folder — the unencrypted Lake_Garda_Trip_Plan.html,
+# the PDF, every planning note — stays local.
+# Do not add exceptions without thinking about who can read the repo.
+/*
+
+!.gitignore
+!index.html
+!robots.txt
+
+# Offline support, added 2026-09-05. All public by nature: caching logic,
+# an app manifest naming the page "Private page", and an anonymous padlock
+# icon. None of them mention the trip.
+!sw.js
+!manifest.webmanifest
+!icon-180.png
+!icon-192.png
+!icon-512.png
