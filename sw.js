@@ -1,6 +1,6 @@
 /* Offline shell cache. Holds only the encrypted file; nothing decrypted
    is ever written to storage. Rebuilt on every publish. */
-const VERSION = 'v-991b600dc6';
+const VERSION = 'v-04b657a4e4';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-180.png'];
 
 self.addEventListener('install', function (e) {
