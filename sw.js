@@ -1,6 +1,6 @@
 /* Offline shell cache. Holds only the encrypted file; nothing decrypted
    is ever written to storage. Rebuilt on every publish. */
-const VERSION = 'v-9545275045';
+const VERSION = 'v-dc288d88bf';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-180.png'];
 
 self.addEventListener('install', function (e) {
@@ -25,7 +25,8 @@ self.addEventListener('fetch', function (e) {
   const url = new URL(req.url);
   const same = url.origin === self.location.origin;
   const font = url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com';
-  if (!same && !font) return;
+  const sdk = url.hostname === 'www.gstatic.com';
+  if (!same && !font && !sdk) return;
 
   e.respondWith((async function () {
     const cache = await caches.open(VERSION);
