@@ -1,0 +1,2 @@
+/* Firebase config sealed with the page passphrase (tools/seal-config.js). Ciphertext only. */
+window.FB_SEALED2={"v":2,"entries":[{"iv":"oike+4jQ1xPvntd6","data":"EEinpfsBhwasF5SDKjuYRtgbcxLkI/G1YtnIrakN+fyXvLmqfPMbbtsl+sexndP31piSCohs6mM8BsS6NfFVvd/8LDslqxTNwQKdfIOVPwdONEGchV9ksvJtAyEvHBhfo2Xgo9WY3CFYb+IZBYOretBv7L5yoU79CH6TfRZp15EX2JA2AKaKmJRY5UHcgzcS1/qpYGsnjmgVvgd4Gx9ZjDNgfX/SPzgXkfJAgxQIXdPmG/Ny9YCDrV79/XdYPVa81Jpk9W7NDwVyUNb1ofn6wpL2YiGOvvTNR1FFTFKEhfOuc/2giBVOPUKxtqp1raDeifXAzYqa6TlOiE3yGUe4h8Ue8GuZRFN3Rr/FcllP3ABfaSqwoy4EdLwpVzS4ycnyKg=="}]};
