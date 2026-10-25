@@ -1,7 +1,7 @@
 /* Offline shell cache. Holds only encrypted files and public code. Rebuilt on every publish.
    Other pages share this github.io origin (and its caches), so this page's caches
    carry a pp- prefix and only those are ever cleaned up. */
-const VERSION = 'v-90734990db';
+const VERSION = 'v-afc4821f92';
 const CACHE = 'pp-' + VERSION;
 const SHELL = ['./', './index.html', './unlock.js', './sync.js', './fbconfig.js', './manifest.webmanifest', './icon-192.png', './icon-180.png'];
 const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
