@@ -44,15 +44,14 @@
     return kv.clear();
   }
 
-  /* keep a copy of this page on the device so it opens with no signal */
+  /* keep a copy of this page on the device so it opens with no signal. A new version is never
+     forced on an open page: PP_UPDATE is set, and the page offers the reload (PP_onUpdate). */
   if ('serviceWorker' in navigator && location.hostname !== 'localhost') {
     var had = !!navigator.serviceWorker.controller;
-    var refresh = function () {
-      var a = document.activeElement;
-      if (a && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT')) { a.addEventListener('blur', function () { location.reload(); }, { once: true }); return; }
-      location.reload();
-    };
-    navigator.serviceWorker.addEventListener('controllerchange', function () { if (had) refresh(); had = true; });
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (had) { window.PP_UPDATE = true; if (typeof window.PP_onUpdate === 'function') window.PP_onUpdate(); }
+      had = true;
+    });
     navigator.serviceWorker.register('sw.js').then(function (r) { try { r.update(); } catch (e) {} }).catch(function () {});
   }
 
