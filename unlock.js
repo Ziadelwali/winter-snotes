@@ -14,9 +14,11 @@
     function db() {
       if (!dbp) dbp = new Promise(function (res, rej) {
         if (!window.indexedDB) return rej(new Error('no IndexedDB'));
+        // a browser whose IndexedDB never answers must not leave the page on "Unlocking…" forever
+        var t = setTimeout(function () { rej(new Error('IndexedDB did not answer')); }, 4000);
         var r = indexedDB.open('pp', 1);
         r.onupgradeneeded = function () { r.result.createObjectStore('kv'); };
-        r.onsuccess = function () { res(r.result); }; r.onerror = function () { rej(r.error); };
+        r.onsuccess = function () { clearTimeout(t); res(r.result); }; r.onerror = function () { clearTimeout(t); rej(r.error); };
       });
       return dbp;
     }
