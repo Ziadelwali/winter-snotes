@@ -86,7 +86,11 @@
         });
       });
     }).catch(function (e) {
-      if (!quiet) say(e && /format|DecompressionStream/.test(String(e.message || e)) ? 'This browser is too old to open the page. Update it and try again.' : 'That passphrase is not right.');
+      // a wrong passphrase fails the AES-GCM check (OperationError); anything else is the browser
+      var why = (e && e.name || 'Error') + ': ' + (e && e.message || e);
+      if (!quiet) say(/DecompressionStream|format/.test(why) ? 'This browser is too old to open the page. Update it and try again.'
+        : (e && e.name === 'OperationError') ? 'That passphrase is not right.'
+        : 'This browser could not open the page (' + why + ').');
       busy(false);
       throw e;
     });
