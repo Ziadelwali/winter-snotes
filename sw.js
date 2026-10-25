@@ -1,10 +1,11 @@
 /* Offline shell cache. Holds only encrypted files and public code. Rebuilt on every publish.
    Other pages share this github.io origin (and its caches), so this page's caches
    carry a pp- prefix and only those are ever cleaned up. */
-const VERSION = 'v-afc4821f92';
+const VERSION = 'v-5719d1f973';
 const CACHE = 'pp-' + VERSION;
-const SHELL = ['./', './index.html', './unlock.js', './sync.js', './fbconfig.js', './manifest.webmanifest', './icon-192.png', './icon-180.png'];
-const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
+const SHELL = ['./', './index.html', './unlock.js', './sync.js', './fbconfig.js', './manifest.webmanifest', './icon-192.png', './icon-180.png',
+  './fonts/dm-sans.woff2', './fonts/dm-mono-400.woff2', './fonts/dm-mono-500.woff2'];
+const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];   // older versions loaded fonts from Google
 
 self.addEventListener('install', function (e) {
   e.waitUntil((async function () {
@@ -43,8 +44,7 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   const same = url.origin === self.location.origin;
-  const font = FONT_HOSTS.indexOf(url.hostname) >= 0;
-  if (!(same && url.href.startsWith(self.registration.scope)) && !font) return;
+  if (!(same && url.href.startsWith(self.registration.scope))) return;
 
   // keeps the worker alive until the background refresh has been stored
   let settle; e.waitUntil(new Promise(function (r) { settle = r; }));
