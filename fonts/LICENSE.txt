@@ -1,0 +1,3 @@
+DM Sans and DM Mono (Colophon Foundry), latin subset as served by Google Fonts.
+SIL Open Font License 1.1: https://openfontlicense.org
+dm-sans.woff2 is the variable font (weights 400-700 are used); dm-mono-400/500 are single weights.
