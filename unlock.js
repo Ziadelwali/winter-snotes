@@ -36,6 +36,17 @@
     };
   })();
 
+  /* the theme picked in the page, from the first paint; and an install offer that may come
+     before the page is open (window properties outlive document.open, listeners do not) */
+  try {
+    var th = localStorage.getItem('pp.theme');
+    if (th === 'light' || th === 'dark') {
+      document.documentElement.setAttribute('data-theme', th);
+      document.querySelectorAll('meta[name=theme-color]').forEach(function (x) { x.setAttribute('content', th === 'dark' ? '#1A1816' : '#F7F5F0'); });
+    }
+  } catch (e) {}
+  addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); window.PP_BIP = e; });
+
   function say(t) { m.textContent = t; }
   function busy(on) { b.disabled = on; b.textContent = on ? 'Unlocking…' : 'Unlock'; }
   /* this page's localStorage keys all start with "pp." (the page moves older ones there on its first start) */
