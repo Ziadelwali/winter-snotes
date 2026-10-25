@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Private page",
-  "short_name": "Private page",
+  "name": "Alpine Winter",
+  "short_name": "Alpine Winter",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
