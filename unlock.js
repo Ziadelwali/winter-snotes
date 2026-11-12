@@ -44,7 +44,7 @@
     var th = localStorage.getItem('pp.theme');
     if (th === 'light' || th === 'dark') {
       document.documentElement.setAttribute('data-theme', th);
-      document.querySelectorAll('meta[name=theme-color]').forEach(function (x) { x.setAttribute('content', th === 'dark' ? '#1A1816' : '#F7F5F0'); });
+      document.querySelectorAll('meta[name=theme-color]').forEach(function (x) { x.setAttribute('content', th === 'dark' ? '#12171C' : '#F3F6F8'); });
     }
   } catch (e) {}
   addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); window.PP_BIP = e; });
